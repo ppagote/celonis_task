@@ -1,0 +1,37 @@
+.form-control {
+    border: 0px;
+    border-bottom: 2px solid blue;
+    width: 70%;
+    border-radius: 0px;
+    padding: 0px;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0;
+}
+
+.container-fluid {
+   margin: 0 auto;
+   width: 500px;
+}
+
+h6 {
+    padding-bottom: 16px;
+}
+
+label {
+    font-size: 13px;
+    color:  #7a7b7c;
+    margin-bottom: 0px;
+}
+
+.count-button {
+    /* border-radius: 0; */
+    padding: 0.375rem 1.75rem;
+    float: right;
+    margin-top: 50px;
+}
+
+.confirm-button {
+    padding: 0.375rem 2.75rem;
+}

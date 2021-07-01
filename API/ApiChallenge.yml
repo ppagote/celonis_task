@@ -1,0 +1,219 @@
+swagger: '2.0'
+info:
+  description: This is the api for the Celonis Programming Challenge
+  version: 1.0.0
+  title: MarsGate
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /marsgate/:
+    post:
+      tags:
+      - marsgate
+      summary: Create a new application
+      operationId: createApplication
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Application object that needs to be added
+        required: true
+        schema:
+          $ref: '#/definitions/ApplicationGenerationTask'
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/ApplicationGenerationTask'
+        405:
+          description: Invalid input
+    get:
+      tags:
+      - marsgate
+      summary: List all applications
+      operationId: listApplications
+      produces:
+      - application/json
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ApplicationTask'
+  /marsgate/{appId}/uploadCv:
+    post:
+      tags:
+      - marsgate
+      summary: Add a CV for new application
+      operationId: addCV
+      consumes:
+      - multipart/form-data
+      produces:
+      - application/json
+      parameters:
+      - name: appId
+        in: path
+        description: ID of application to delete
+        required: true
+        type: integer
+        format: int64
+      - name: file
+        in: formData
+        description: file to upload
+        required: true
+        type: file
+      responses:
+        200:
+          description: successful operation
+          schema:
+             $ref: '#/definitions/UploadResponse'
+        405:
+          description: Invalid input
+  /marsgate/{appId}:
+    put:
+      tags:
+      - marsgate
+      summary: Updates an application
+      operationId: updateApplication
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: appId
+        in: path
+        description: id of application to update
+        required: true
+        type: integer
+        format: int64
+      - in: body
+        name: body
+        description: Application object that needs to be added
+        required: true
+        schema:
+          $ref: '#/definitions/ApplicationTask'
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/ApplicationTask'
+        405:
+          description: Invalid input
+    get:
+      tags:
+        - marsgate
+      summary: Get an application by id
+      description: Returns a single application
+      operationId: getApplicationByID
+      parameters:
+        - name: appId
+          in: path
+          description: id of application to return
+          required: true
+          type: integer
+          format: int64
+      produces:
+        - application/json
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/ApplicationTask'
+        400:
+          description: Invalid ID supplied
+        404:
+          description: not found
+    delete:
+      tags:
+      - marsgate
+      summary: Delete an application
+      operationId: deleteApplicationByID
+      produces:
+      - application/json
+      parameters:
+      - name: appId
+        in: path
+        description: Application id to delete
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Application not found
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: Celonis-Auth
+    in: header
+security:
+  - api_key: []
+definitions:
+  ApplicationTask:
+    type: object
+    properties:
+      personalDetail:
+        $ref: '#/definitions/User'
+      essay:
+        type: string
+      fileUrl:
+        type: string
+      status:
+        type: string
+        enum:
+        - created
+        - inprogress
+        - submitted
+      substatus:
+        type: string
+        enum:
+        - AddCV
+        - PersonalDetails
+        - Essay
+  User:
+    type: object
+    required:
+    - phone
+    - firstName
+    - lastName
+    - email
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+      email:
+        type: string
+      phone:
+        type: string
+  UploadResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      url:
+        type: string
+      message:
+        type: string
+  ApplicationGenerationTask:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      creationDate:
+        type: string
+        format: date-time
+host: virtserver.swaggerhub.com
+basePath: /celonistask
+schemes:
+ - https

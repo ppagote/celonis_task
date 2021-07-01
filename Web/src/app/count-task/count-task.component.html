@@ -1,0 +1,59 @@
+<app-header [title] = "title" [linkUrl]="linkUrl"></app-header>
+<div class="container-fluid" *ngIf="status == taskStatus.Created.toString() || status == taskStatus.Cancelled.toString()">
+  <h6>Please input the configuration from `Count from X to Y` task.</h6>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+    <div class="form-group">
+      <label for="from">Counting from number:</label>
+      <input type="text" class="form-control" id="from"  autocomplete="off" name="from"
+       formControlName="from">
+       <span class="text-danger"
+       *ngIf= "(formGroupControl.from.touched || submitted) && formGroupControl.from.errors?.required">
+        From is required
+      </span>
+      <span class="text-danger"
+      *ngIf= "(formGroupControl.from.touched || submitted) && formGroupControl.from.errors?.pattern">
+       From should only contain numbers
+     </span>
+    </div>
+
+    <div class="form-group">
+        <label for="to">Counting to number:</label>
+        <input type="text" class="form-control" id="to"  autocomplete="off" name="to"
+         formControlName="to"/>
+         <span class="text-danger"
+         *ngIf= "(formGroupControl.to.touched || submitted) && formGroupControl.to.errors?.required">
+          To is required
+        </span>
+        <span class="text-danger"
+      *ngIf= "(formGroupControl.to.touched || submitted) && formGroupControl.to.errors?.pattern">
+       To should only contain numbers
+     </span>
+      </div>
+
+      <button type="submit" class="btn btn-primary count-button" >Next</button>
+    
+  </form>
+  <div *ngIf="!formGroup.valid && formGroup.controls.from.touched 
+  && formGroup.controls.to.touched "><span class="text-danger">From should be greater than To</span></div>
+</div>
+
+<div class="container-fluid" *ngIf="status == 'confirm'">
+  <h6>Do you want to execute task now?</h6>
+  <button type="submit" class="btn btn-primary confirm-button" (click)="onConfirmExecution()">Yes</button>
+</div>
+
+
+<div class="container-fluid" *ngIf="status == taskStatus.Executing.toString()">
+  <h6>Executing now..</h6>
+  <h6>We are currently at number {{from}}/{{to}}</h6>
+  <div class="spinner-border" style="width: 8rem; height: 8rem;" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <br><br>
+  <button type="submit" class="btn btn-primary" (click)="onCancel()" >Cancel Execution</button>
+</div>
+
+<div class="container-fluid" *ngIf="status == taskStatus.Finished.toString()">
+  <h6>Task finished execution successfully</h6>
+  <h6>Counted from {{initialFrom}}/{{to}}</h6>
+</div>

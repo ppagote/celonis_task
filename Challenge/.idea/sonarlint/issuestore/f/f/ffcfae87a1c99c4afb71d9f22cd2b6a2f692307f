@@ -1,0 +1,9 @@
+
+K
+java:S1068".Remove this unused "dateFormat" private field.(í›ÿ¯8¾åÎÿê.
+D
+java:S2885"'Make "dateFormat" an instance variable.(í›ÿ¯8Âş‹ÿê.
+e
+java:S1068"CRemove this unused "projectGenerationTaskRepository" private field.(û©ÃÂûÿÿÿÿ8¼Ğ©ÿê.
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(²òûùûÿÿÿÿ8²Šÿê.
+T	java:S106"9Replace this use of System.out or System.err by a logger.(êí„8íÇ×€ë.

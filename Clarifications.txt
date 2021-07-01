@@ -1,0 +1,15 @@
+1. Does Clicking on plus button creates a new task?
+	If yes, what does the block1 in image2 is used for as currently its not clickable? 
+	If No, will clicking on the block1 in image2 creates the task. If that's the case, then how to execute the X to Y task without the taskID?
+
+2. In image1, please specify the conditon under which 4th block will be visible. As per my understanding, if user execute X to Y task then to moniter the progress, block1 in 		image1 should be used.
+
+3. Please confirm if delete task works only if its execution is finised and User should not be able to delete the task which are not configurable or not executed?
+
+4. On Cancel Execution in image 5, page is redirected to image4 which asks again to confirm if execution should start. Please confirm if that routing is correct or user should be redirected to list of task page and its status will be "Task not executed".
+
+5. Once the task is cancelled from list of task in image1, currently as per wireframes user is redirected to monitor progess step in image5. Please confirm if thats correct.
+
+6. On image8, once the task is cancelled, can the user restart the task?
+
+7. As per the Task4; (The progress of the task should be exposed via the API so that the web client can monitor it.). Is it required to fetch the incremented counter value from the api?

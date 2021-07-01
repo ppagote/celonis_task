@@ -1,0 +1,14 @@
+
+Z	java:S106i"9Replace this use of System.out or System.err by a logger.(ª¿ûàþÿÿÿÿ8—¦ä¥í.
+V	java:S106‚"9Replace this use of System.out or System.err by a logger.(ËÖ ±8¤à±¦í.
+U	java:S106X"9Replace this use of System.out or System.err by a logger.(–á²»8ÝòÌ¤í.
+U	java:S106q"9Replace this use of System.out or System.err by a logger.(øŠÔç8—¦ä¥í.
+c
+java:S2142k"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€8—¦ä¥í.
+U	java:S106Y"9Replace this use of System.out or System.err by a logger.(Þï±É8´Þô¤í.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ß‚ÝÔ8ÝòÌ¤í.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ß‚ÝÔ8ÝòÌ¤í.
+d
+java:S2142ƒ"FEither re-interrupt this method or rethrow the "InterruptedException".(üŸ´Â8¤à±¦í.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ß‚ÝÔ8ÝòÌ¤í.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ß‚ÝÔ8ÝòÌ¤í.

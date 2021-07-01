@@ -1,0 +1,23 @@
+<app-header [title]="title" [linkUrl]="linkUrl"></app-header>
+<div class="container-fluid">
+  <hr />
+  <div class="row addpadding">
+    <div class="col-sm-12">
+      <h6>Generate sample project task</h6>
+      <p>
+        This task generates the sample project that should be used to finish
+        challenge 2 and 3.
+      </p>
+    </div>
+  </div>
+  <hr />
+  <a class="update" [routerLink]="['/count-tasks/count']" (click) = "startCountTask()">
+    <div class="row addpadding">
+      <div class="col-sm-12">
+        <h6>Count from X to Y</h6>
+        <p>This task counts from input X to given input Y</p>
+      </div>
+    </div>
+  </a>
+  <hr />
+</div>

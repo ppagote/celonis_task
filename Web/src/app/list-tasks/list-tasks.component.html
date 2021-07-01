@@ -1,0 +1,65 @@
+<app-header [title]="title" [linkUrl]="linkUrl"></app-header>
+<div class="container-fluid" style="position: relative" >
+  <a class="img-position text-right" href="#" (click)="createTask('taskName')" 
+    ><img class="float-right" src="../../assets/circle.png" alt="Create Task"
+  /></a>
+  <div class="row" *ngFor="let task of tasks">
+    <div class="col-sm-12">
+      <hr />
+    </div>
+    <a class="box-width" [routerLink]="['/count-tasks/count']" (click) = "showStatus(task);">
+      <div class="col-sm-10 addpadding">
+        <h6>Generate sample project task</h6>
+        <p>
+          This task generates the sample project that should be used to finish
+          challenge 2 and 3.
+        </p>
+        <h6 class="jobstatus" *ngIf="task.taskStatus == taskStatus.Created.toString()">
+          Task not configured yet
+        </h6>
+        <h6 class="jobstatus" *ngIf="task.taskStatus == taskStatus.Finished.toString()">
+          Finished
+        </h6>
+        <h6 class="jobstatus" *ngIf="task.taskStatus == taskStatus.Executing.toString()">
+          Executing now..
+        </h6>
+        <h6 class="jobstatus" *ngIf="task.taskStatus == taskStatus.Cancelled.toString()">
+          Task not executed
+        </h6>
+      </div>
+    </a>
+    <div class="col-sm-2">
+      <button
+        type="button"
+        *ngIf="task.taskStatus == taskStatus.Executing.toString()"
+        class="btn btn-primary"
+        (click)="callCancelService(task)"
+      >
+        Cancel
+      </button>
+      <button
+        type="button"
+        *ngIf="
+          task.taskStatus == taskStatus.Created.toString() ||
+          task.taskStatus == taskStatus.Cancelled.toString()
+        "
+        class="btn btn-danger" disabled
+      >
+        Delete
+      </button>
+      <button
+      type="button"
+      *ngIf="
+        task.taskStatus == taskStatus.Finished.toString()
+      "
+      class="btn btn-danger"  
+      (click)="callDeleteService(task)"
+    >
+      Delete
+    </button>
+    </div>
+  </div>
+  <hr *ngIf="tasks.length != 0" />
+</div>
+
+<!-- <app-create-tasks *ngIf="create" [task]="task"></app-create-tasks> -->
